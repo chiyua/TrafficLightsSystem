@@ -1,7 +1,7 @@
 ﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "trafficlightscontroller.h"
-#include "broadcastreceiver.h"
+#include "sender.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    qmlRegisterType<TrafficLightsController>("trafficlight.controller.backend", 1, 0, "TrafficLightsController");
-    qmlRegisterType<BroadcastReceiver>("broadcast.receiver.backend", 1, 0, "BroadcastReceiver");
+    qmlRegisterType<Sender>("sender.backend",1,0,"Sender");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
